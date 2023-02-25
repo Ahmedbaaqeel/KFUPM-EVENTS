@@ -1,0 +1,22 @@
+name: Laravel
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  laravel-tests:
+
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v3
+      run: composer install 
+    - name: running server
+      run: php artisan serve
+    - name: npm install, run
+      run: |
+       npm i
+       npm run dev
